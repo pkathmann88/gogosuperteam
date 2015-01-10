@@ -12,6 +12,7 @@ public class UserDAO {
 	UserDAO(){
 		
 	}
+	
 	public void SetId(int id){
 		this.id = id;
 	}

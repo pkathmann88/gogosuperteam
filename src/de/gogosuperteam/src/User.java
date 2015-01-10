@@ -17,6 +17,14 @@ public class User {
 	public User(){
 		
 	}
+	
+	public User (int id, String name, String password, Date anmeldeDatum, ArrayList<Post> postlist){
+		this.name = name;
+		this.password=password;
+		this.id=id;
+		this.anmeldeDatum=anmeldeDatum;
+		this.postlist = postlist;
+	}
 
 	public String getName() {
 		return name;
