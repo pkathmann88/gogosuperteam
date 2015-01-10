@@ -11,8 +11,11 @@ public class Thread {
 	private int id;
 	private LinkedList<Post> posts;
 	
-	public Thread() {
-		
+	public Thread(Date datum, String titel, int id) {
+		this.datum = datum;
+		this.titel = titel;
+		this.id = id;
+		this.posts = posts;
 	}
 	
 	public void addPost(Post post) {
@@ -45,5 +48,9 @@ public class Thread {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setPosts(LinkedList<Post> posts) {
+		this.posts = posts;
 	}
 }
