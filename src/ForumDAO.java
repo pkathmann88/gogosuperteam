@@ -1,10 +1,10 @@
 
-public class Forum {
+public class ForumDAO {
 	
 	private int id;
 	private String name;
 	
-	public Forum(String name) {
+	public ForumDAO(String name) {
 		this.name = name;		
 	}
 	
