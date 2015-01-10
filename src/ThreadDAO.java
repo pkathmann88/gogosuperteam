@@ -13,4 +13,24 @@ public class ThreadDAO {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public Date getDatum() {
+		return datum;
+	}
+
+	public void setDatum(Date datum) {
+		this.datum = datum;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public int getId() {
+		return id;
+	}
 }
