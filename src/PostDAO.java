@@ -7,7 +7,7 @@ public class PostDAO {
 	int id ;
 	String Ersteller;
 	Date Erstelldatum;
-	String text;
+	String Text;
 
 	
 	
