@@ -3,64 +3,43 @@ package de.gogosuperteam.src;
 import java.util.Date;
 
 public class PostDAO {
-	
-	private int id ;
+
+	private int id;
+	private String thema;
 	private String ersteller;
 	private Date erstelldatum;
 	private String text;
 
-	
-	
-	PostDAO(){
-		
-	}
-	
-	
-	
-	public String getErsteller() {
-		return ersteller;
-	}
-
-
-
-	public void setErsteller(String ersteller) {
+	PostDAO(String thema, String ersteller, String text, Date erstelldatum) {
+		this.thema = thema;
 		this.ersteller = ersteller;
-	}
-
-
-
-	public Date getErstelldatum() {
-		return erstelldatum;
-	}
-
-
-
-	public void setErstelldatum(Date erstelldatum) {
+		this.text = ersteller;
 		this.erstelldatum = erstelldatum;
+
 	}
 
-
-
-	public String getText() {
-		return text;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
-
-	public void setId(int id){
-		this.id = id;
+	public String getThema() {
+		return thema;
 	}
-	
+
+	public String getErsteller() {
+		return ersteller;
+	}
+
+	public Date getErstelldatum() {
+		return erstelldatum;
+	}
+
+	public String getText() {
+		return text;
+	}
+
 }
