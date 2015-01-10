@@ -1,4 +1,4 @@
-package src;
+package de.gogosuperteam.src;
 
 import java.util.Date;
 
