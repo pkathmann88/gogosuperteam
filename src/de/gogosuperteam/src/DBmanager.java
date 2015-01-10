@@ -1,6 +1,5 @@
 package de.gogosuperteam.src;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DBmanager {
@@ -26,11 +25,32 @@ public class DBmanager {
 		return userList;
 	}
 	
-	static HashMap getThreadsOfUserId (){
-		HashMap<Integer, UserDAO> userList = new HashMap<Integer, UserDAO>();
+	
+	
+	static HashMap getAllThreads (){
+		HashMap<Integer, ThreadDAO> threadList = new HashMap<Integer, ThreadDAO>();
 		//to add: Datenbankabfrage
-		return userList;
+		return threadList;
 	}
+	
+	static HashMap getAllPosts (){
+		HashMap<Integer, PostDAO> postList = new HashMap<Integer, PostDAO>();
+		//to add: Datenbankabfrage
+		return postList;
+	}
+	
+	static HashMap getPostsOfUserId (){
+		HashMap<Integer, PostDAO> postList = new HashMap<Integer, PostDAO>();
+		//to add: Datenbankabfrage
+		return postList;
+	}
+	
+	static HashMap getPostsOfThreadId (){
+		HashMap<Integer, PostDAO> postList = new HashMap<Integer, PostDAO>();
+		//to add: Datenbankabfrage
+		return postList;
+	}
+	
 	
 	
 	
