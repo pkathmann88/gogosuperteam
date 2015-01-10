@@ -10,6 +10,5 @@ public class Forum {
 	
 	public void setId(int id) {
 		this.id = id;
-		
 	}
 }
