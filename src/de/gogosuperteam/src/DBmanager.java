@@ -54,6 +54,46 @@ public class DBmanager {
 	
 	
 	
+	// inserts __________________
+	static int insertForumDAO (ForumDAO forumDAO){
+		
+		//schick forumDAO and die Datenbank
+		//die Datenbank generiert einen Key und gibt sie zurueck
+		
+		Integer key = new Integer(0);
+		
+		return key;
+	}
+	
+	static int insertThreadDAO (ThreadDAO threadDAO){
+		
+		//schick threadDAO and die Datenbank
+		//die Datenbank generiert einen Key und gibt sie zurueck
+		
+		Integer key = new Integer(0);
+		
+		return key;
+	}
+	
+	static int insertUserDAO (UserDAO userDAO){
+		
+		//schick userDAO and die Datenbank
+		//die Datenbank generiert einen Key und gibt sie zurueck
+		
+		Integer key = new Integer(0);
+		
+		return key;
+	}
+	
+	static int insertPostDAO (PostDAO postDAO){
+		
+		//schick postDAO and die Datenbank
+		//die Datenbank generiert einen Key und gibt sie zurueck
+		
+		Integer key = new Integer(0);
+		
+		return key;
+	}
 	
 
 }
