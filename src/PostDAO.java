@@ -5,9 +5,9 @@ import java.util.Date;
 public class PostDAO {
 	
 	int id ;
-	String Ersteller;
-	Date Erstelldatum;
-	String Text ;
+	String ersteller;
+	Date erstelldatum;
+	String text ;
 
 	
 	
