@@ -1,5 +1,7 @@
 package de.gogosuperteam.src;
 
+import java.util.HashMap;
+
 public class ThreadMapper {
 
 	public static ThreadDAO convert(Thread thread) {
@@ -8,7 +10,7 @@ public class ThreadMapper {
 		return dao;
 	}
 	
-	public static Thread convert(ThreadDAO thread) {
+	public static Thread convert(ThreadDAO thread, HashMap<Integer, PostDAO> posts) {
 		Thread thed = new Thread(thread.getDatum(), thread.getTitel(), thread.getId());
 		
 		return thed;
