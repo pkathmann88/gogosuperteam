@@ -1,10 +1,11 @@
 package de.gogosuperteam.src;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserMapper {
 
-	static User MapToUser (UserDAO user, ArrayList<Post> postlist){
+	static User MapToUser (UserDAO user, HashMap<Integer, Post> postlist){
 		
 		
 		

@@ -2,6 +2,7 @@ package de.gogosuperteam.src;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 
 public class User {
@@ -12,13 +13,13 @@ public class User {
 	private int id;
 	private Date anmeldeDatum;
 
-	private ArrayList<Post> postlist;
+	private HashMap<Integer, Post> postlist;
 	
 	public User(){
 		
 	}
 	
-	public User (int id, String name, String password, Date anmeldeDatum, ArrayList<Post> postlist){
+	public User (int id, String name, String password, Date anmeldeDatum, HashMap<Integer, Post> postlist){
 		this.name = name;
 		this.password=password;
 		this.id=id;
