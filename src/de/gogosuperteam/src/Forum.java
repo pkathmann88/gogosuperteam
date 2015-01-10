@@ -1,16 +1,16 @@
 package de.gogosuperteam.src;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Forum {
 
 	private int id;
 	private String name;
-	private ArrayList<Thread> threadList;
+	private HashMap<Integer, Thread> threadMap;
 
-	public Forum(String name, ArrayList<Thread> tl) {
+	public Forum(String name, HashMap<Integer, Thread> tl) {
 		this.name = name;
-		this.threadList = tl;
+		this.threadMap = tl;
 	}
 
 	public void setId(int id) {
@@ -21,8 +21,8 @@ public class Forum {
 		return id;
 	}
 
-	public void addThread(Thread t) {
-		threadList.add(t);
+	public void addThread(Thread t, Integer id) {
+		threadMap.put(id, t);
 
 	}
 
@@ -30,8 +30,8 @@ public class Forum {
 		return name;
 	}
 
-	public ArrayList<Thread> getThreadList() {
-		return threadList;
+	public HashMap<Integer, Thread> getThreadList() {
+		return threadMap;
 	}
 
 }
