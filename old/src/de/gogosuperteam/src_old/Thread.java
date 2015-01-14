@@ -1,28 +1,26 @@
 package de.gogosuperteam.src;
 
 import java.util.Date;
-import java.util.LinkedList;
-
+import java.util.HashMap;
 
 public class Thread {
 
 	private Date datum;
 	private String titel;
 	private int id;
-	private LinkedList<Post> posts;
+	private HashMap<Integer, Post> posts;
 	
 	public Thread(Date datum, String titel, int id) {
 		this.datum = datum;
 		this.titel = titel;
 		this.id = id;
-		this.posts = posts;
 	}
 	
 	public void addPost(Post post) {
-		posts.add(post);
+		posts.put(id, post);
 	}
 	
-	public LinkedList<Post> getPosts() {
+	public HashMap<Integer, Post> getPosts() {
 		return posts;
 	}
 	
@@ -50,7 +48,7 @@ public class Thread {
 		this.id = id;
 	}
 
-	public void setPosts(LinkedList<Post> posts) {
+	public void setPosts(HashMap<Integer, Post> posts) {
 		this.posts = posts;
 	}
 }

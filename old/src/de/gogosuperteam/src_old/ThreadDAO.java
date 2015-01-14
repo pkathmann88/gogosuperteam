@@ -1,31 +1,23 @@
 package de.gogosuperteam.src;
 
 import java.util.Date;
-import java.util.LinkedList;
 
-
-public class Thread {
+public class ThreadDAO {
 
 	private Date datum;
 	private String titel;
 	private int id;
-	private LinkedList<Post> posts;
-	
-	public Thread(Date datum, String titel, int id) {
-		this.datum = datum;
+
+	public ThreadDAO(String titel , int id, Date datum) {
 		this.titel = titel;
+		this.datum = datum;
 		this.id = id;
-		this.posts = posts;
 	}
-	
-	public void addPost(Post post) {
-		posts.add(post);
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	
-	public LinkedList<Post> getPosts() {
-		return posts;
-	}
-	
+
 	public Date getDatum() {
 		return datum;
 	}
@@ -44,13 +36,5 @@ public class Thread {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setPosts(LinkedList<Post> posts) {
-		this.posts = posts;
 	}
 }

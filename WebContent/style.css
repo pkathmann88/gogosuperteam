@@ -1,0 +1,212 @@
+/*
+Theme Name: Forum
+Theme URI:
+http://www.lenc.de
+Description: Forum
+Version: 1.0
+Author: Joanna Lenc
+Author URI:
+http://www.lenc.de
+*/
+body  {
+background-color: #fff;
+font-family:verdana;
+font-size:12px;
+margin:0;
+height:100%;
+color: #000;
+}
+header, nav, footer, article, div
+{
+display:block;
+}
+div#background
+{
+position:relative;
+margin: 0 auto;
+padding:0;
+width:1024px;
+}
+header
+{
+float: left;
+margin-top:0px;
+padding:0;
+width:1024px;
+height:200px;
+}
+
+div#headline {
+font-size: 18px;
+color: #000;
+}
+nav.vertical {
+float: left;
+margin-top: 95px;
+margin-left: 178px;
+height: 25px;
+width: 820px;
+}
+
+nav.vertical ul
+{
+float: right;
+padding:0;
+height: 25px;
+width: 820px;
+list-style-type: none;
+}
+
+nav.vertical ul li
+{
+float: left;
+height: 25px;
+font-size: 12px;
+font-weight: bold;
+color: #646363;
+margin-right: 0px;
+margin-left: 20px;
+padding-left: 48px;
+padding-right: 12px;
+padding-top: 0px;
+background-image: url(img/bullet.png);
+background-repeat: no-repeat;
+}
+nav.vertical ul li.menu-item-home
+{
+float: left;
+height: 25px;
+font-size: 12px;
+font-weight: bold;
+color: #646363;
+margin-right: 0px;
+padding-left:5px;
+background: transparent;
+}
+nav.vertical ul li a {
+color: #d09a3b;
+text-decoration: none;
+font-family: times;
+font-size: 14px;
+}
+div#content {
+float: left;
+width: 900px;
+background-image: url(img/bg_verlauf.png);
+background-position: center top;
+}
+
+article {
+width: 600px;
+float: left;
+line-height: 18px;
+}
+
+table {
+float:left;
+width:900px;
+margin-bottom:30px;
+
+}
+td.first {
+width:550px;
+}
+td.beitrag {
+width:700px;
+}
+td {
+border: 1px solid #000;
+padding: 5px;
+}
+textarea {
+border: 1px solid #000;
+width:895px;
+}
+footer {
+position:relative;
+bottom:0;
+height: 117px;
+width: 1024px;
+margin: 0 auto;
+}
+
+
+nav.footer {
+float: right;
+margin-top: 3px;
+height: 25px;
+width: 300px;
+}
+
+nav.footer ul
+{
+float: right;
+padding-top:0;
+height: 25px;
+width: 300px;
+margin-left: 200px;
+list-style-type: none;
+}
+
+nav.footer ul li
+{
+float: left;
+height: 25px;
+font-size: 12px;
+font-weight: bold;
+color: #646363;
+margin-right: 0px;
+margin-left: 20px;
+padding-left: 50px;
+padding-right: 15px;
+padding-top: 0px;
+background-image: url(img/bullet.png);
+background-repeat: no-repeat;
+}
+nav.footer ul li.menu-item-32
+{
+float: left;
+height: 25px;
+font-size: 12px;
+font-weight: bold;
+color: #646363;
+margin-right: 0px;
+padding-left:5px;
+background: transparent;
+}
+nav.footer ul li a {
+color: #d09a3b;
+text-decoration: none;
+font-family: times;
+font-size: 14px;
+}
+
+h1, h1 a {
+font-family: Caudex;
+color: #d09a3b;
+font-size: 18px;
+margin: 0;
+padding: 0;
+padding-bottom:10px;
+text-decoration: none;
+}
+p {
+margin: 0;
+padding: 0;
+}
+p.center {
+text-align: center;
+}
+a {
+color: #d09a3b;
+text-decoration: none;
+}
+
+h2, h2 a {
+font-family: Caudex;
+color: #d09a3b;
+font-size: 14px;
+margin: 0;
+padding: 0;
+text-decoration: none;
+}

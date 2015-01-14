@@ -7,7 +7,7 @@ public class ThreadDAO {
 	private Date datum;
 	private String titel;
 	private int id;
-
+	
 	public ThreadDAO(String titel , int id, Date datum) {
 		this.titel = titel;
 		this.datum = datum;
