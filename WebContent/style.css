@@ -9,12 +9,12 @@ Author URI:
 http://www.lenc.de
 */
 body  {
-background-color: #fff;
+background-color: #222327;
 font-family:verdana;
 font-size:12px;
 margin:0;
 height:100%;
-color: #000;
+color: #666;
 }
 header, nav, footer, article, div
 {
@@ -25,36 +25,59 @@ div#background
 position:relative;
 margin: 0 auto;
 padding:0;
-width:1024px;
+width:900px;
 }
 header
 {
 float: left;
-margin-top:0px;
+margin-top:10px;
 padding:0;
-width:1024px;
-height:200px;
+width:900px;
+height:250px;
 }
 
 div#headline {
-font-size: 18px;
-color: #000;
+padding-left:600px;
+padding-top:102px;
+height: 34px;
+font-size: 12px;
+color: #fff;
+background-image: url(img/bg_header.png);
+background-repeat: repeat-x;
+border-radius: 5px;
+}
+a.home {
+position:absolute;
+display:block;
+width:80px;
+height:150px;
+margin-left: 50px;
+margin-top:20px;
+background-image: url(img/logo.png);
+background-repeat: no-repeat;
+z-index:2;
 }
 nav.vertical {
 float: left;
-margin-top: 95px;
-margin-left: 178px;
+background-image: url(img/bg_zeile.png);
+background-repeat: repeat-x;
+margin-top: 50px;
+margin-left: 0px;
 height: 25px;
-width: 820px;
+border-radius: 5px;
+width: 900px;
 }
 
 nav.vertical ul
 {
 float: right;
 padding:0;
+margin:0;
+padding-top:5px;
 height: 25px;
 width: 820px;
 list-style-type: none;
+color:#fff;
 }
 
 nav.vertical ul li
@@ -68,7 +91,7 @@ margin-right: 0px;
 margin-left: 20px;
 padding-left: 48px;
 padding-right: 12px;
-padding-top: 0px;
+padding-top: -5px;
 background-image: url(img/bullet.png);
 background-repeat: no-repeat;
 }
@@ -84,7 +107,7 @@ padding-left:5px;
 background: transparent;
 }
 nav.vertical ul li a {
-color: #d09a3b;
+color: #fff;
 text-decoration: none;
 font-family: times;
 font-size: 14px;
@@ -92,8 +115,6 @@ font-size: 14px;
 div#content {
 float: left;
 width: 900px;
-background-image: url(img/bg_verlauf.png);
-background-position: center top;
 }
 
 article {
@@ -106,7 +127,12 @@ table {
 float:left;
 width:900px;
 margin-bottom:30px;
-
+}
+td.kat {
+background-image: url(img/bg_zeile.png);
+background-repeat: repeat-x;
+background-color: transparent;
+color:#fff;
 }
 td.first {
 width:550px;
@@ -115,70 +141,62 @@ td.beitrag {
 width:700px;
 }
 td {
-border: 1px solid #000;
+border: 0;
 padding: 5px;
+background-color: #eee;
+color: #666;
+border-radius: 5px;
 }
 textarea {
 border: 1px solid #000;
+background-color: #eee;
+color:#666;
 width:895px;
 }
 footer {
 position:relative;
 bottom:0;
-height: 117px;
-width: 1024px;
+height: 136px;
+width: 900px;
 margin: 0 auto;
 }
 
 
 nav.footer {
 float: right;
-margin-top: 3px;
-height: 25px;
-width: 300px;
+margin-top: 20px;
+padding-top:5px;
+height: 20px;
+width: 900px;
+background-image: url(img/bg_zeile.png);
+background-repeat: repeat-x;
+border-radius: 5px;
 }
 
 nav.footer ul
 {
 float: right;
-padding-top:0;
+padding:0;
+margin:0;
 height: 25px;
-width: 300px;
-margin-left: 200px;
+width: 900px;
 list-style-type: none;
 }
 
 nav.footer ul li
 {
-float: left;
+float: right;
 height: 25px;
-font-size: 12px;
-font-weight: bold;
-color: #646363;
-margin-right: 0px;
-margin-left: 20px;
-padding-left: 50px;
-padding-right: 15px;
+margin-right: 50px;
 padding-top: 0px;
-background-image: url(img/bullet.png);
-background-repeat: no-repeat;
 }
-nav.footer ul li.menu-item-32
-{
-float: left;
-height: 25px;
-font-size: 12px;
-font-weight: bold;
-color: #646363;
-margin-right: 0px;
-padding-left:5px;
-background: transparent;
-}
+
 nav.footer ul li a {
-color: #d09a3b;
+color: #fff;
+margin:0;
+padding:0;
 text-decoration: none;
-font-family: times;
-font-size: 14px;
+font-size: 12px;
 }
 
 h1, h1 a {
@@ -198,7 +216,7 @@ p.center {
 text-align: center;
 }
 a {
-color: #d09a3b;
+color: #ff8a00;
 text-decoration: none;
 }
 
