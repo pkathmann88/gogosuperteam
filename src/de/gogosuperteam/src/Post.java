@@ -5,20 +5,24 @@ import java.util.Date;
 public class Post {
 	private int id;
 	private String thema;
-	private String ersteller;
+	private int erstellerId;
 	private String text;
 	private Date erstelldatum;
 	
-	public Post(int id, String thema, String ersteller, String text, Date erstelldatum) {
+	public Post() {
+		
+	}
+	
+	public Post(int id, String thema, int erstellerId, String text, Date erstelldatum) {
 		this.id = id;
 		this.thema = thema;
-		this.ersteller = ersteller;
+		this.erstellerId = erstellerId;
 		this.text = text;
 		this.erstelldatum = erstelldatum;
 	}
 
-	public String getErsteller() {
-		return ersteller;
+	public int getErstellerId() {
+		return erstellerId;
 	}
 
 	public String getText() {

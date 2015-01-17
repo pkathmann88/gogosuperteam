@@ -8,10 +8,13 @@ public class ThreadDAO {
 	private String titel;
 	private int id;
 	
+	public ThreadDAO() {
+		
+	}
+	
 	public ThreadDAO(String titel , int id, Date datum) {
 		this.titel = titel;
 		this.datum = datum;
-		this.id = id;
 	}
 
 	public void setId(int id) {

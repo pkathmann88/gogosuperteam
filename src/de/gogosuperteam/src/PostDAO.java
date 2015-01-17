@@ -6,16 +6,18 @@ public class PostDAO {
 
 	private int id;
 	private String thema;
-	private String ersteller;
+	private int erstellerId;
 	private Date erstelldatum;
 	private String text;
 
-	PostDAO(String thema, String ersteller, String text, Date erstelldatum) {
+	PostDAO() {
+		
+	}
+	
+	PostDAO(String thema, int erstellerId, String text) {
 		this.thema = thema;
-		this.ersteller = ersteller;
-		this.text = ersteller;
-		this.erstelldatum = erstelldatum;
-
+		this.erstellerId = erstellerId;
+		this.text = text;
 	}
 
 	public void setId(int id) {
@@ -30,8 +32,8 @@ public class PostDAO {
 		return thema;
 	}
 
-	public String getErsteller() {
-		return ersteller;
+	public int getErstellerId() {
+		return erstellerId;
 	}
 
 	public Date getErstelldatum() {
@@ -40,6 +42,22 @@ public class PostDAO {
 
 	public String getText() {
 		return text;
+	}
+
+	public void setThema(String thema) {
+		this.thema = thema;
+	}
+
+	public void setErstellerId(int erstellerId) {
+		this.erstellerId = erstellerId;
+	}
+
+	public void setErstelldatum(Date erstelldatum) {
+		this.erstelldatum = erstelldatum;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }

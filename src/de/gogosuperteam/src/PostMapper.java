@@ -8,7 +8,7 @@ public class PostMapper {
 		
 		int idDAO = p.getId();
 		String themaDAO = p.getThema();
-		String erstellerDAO = p.getErsteller();
+		int erstellerDAO = p.getErstellerId();
 		String textDAO = p.getText();
 		Date erstelldatumDAO = p.getErstelldatum();
 		

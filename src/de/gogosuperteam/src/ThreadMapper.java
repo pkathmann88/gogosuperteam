@@ -13,5 +13,4 @@ public class ThreadMapper {
 		
 		return thed;
 	}
-	
 }
