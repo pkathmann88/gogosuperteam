@@ -7,7 +7,11 @@ public class Commander {
 
 	private DBCommander comm = new DBCommander();
 
-	public static List<Forum> getForums(Forum forum) {
+	public Commander() throws Exception {
+		comm.init();
+	}
+	
+	public List<Forum> getForums(Forum forum) {
 
 		List<Forum> forums = new LinkedList<Forum>();
 
@@ -21,10 +25,11 @@ public class Commander {
 		return forums;
 	}
 
-	public static List<Thread> getThreads(Forum forum) {
+	public List<Thread> getThreads(Forum forum) {
 
 		List<Thread> threads = new LinkedList<Thread>();
 
+		
 //		ArrayList<Integer> keys = new ArrayList(threadDAOs.keySet());
 //
 //		for (int i = 0; i < keys.size(); i++) {
@@ -35,47 +40,47 @@ public class Commander {
 		return threads;
 	}
 
-	public static List<Post> getPosts(Thread thread) {
+	public List<Post> getPosts(Thread thread) {
 		return null;
 	}
 	
-	public static List<Post> searchForum(String suche) {
+	public List<Post> searchForum(String suche) {
 		return null;
 	}
 
-	public static Forum getForum(int id) {
+	public Forum getForum(int id) {
 		return null;
 	}
 	
-	public static Post getPost(int id) {
+	public Post getPost(int id) {
 		return null;
 	}
 
-	public static Thread getThread(int id) {
+	public Thread getThread(int id) {
 		return null;
 	}
 
-	public static int getPostCount(Thread tread) {
+	public int getPostCount(Thread tread) {
 		return 0;
 	}
 	
-	public static int getThreadCount(Forum forum) {
+	public int getThreadCount(Forum forum) {
 		return 0;
 	}
 	
-	public static boolean login(String name, String pw) {
+	public boolean login(String name, String pw) {
 		return false;
 	}
 	
-	public static User getUser(String name) {
+	public User getUser(String name) {
 		return null;
 	}
 	
-	public static Post lastEntry(Forum forum) {
+	public Post lastEntry(Forum forum) {
 		return null;
 	}
 	
-	public static Post lastEntry(Thread thread) {
+	public Post lastEntry(Thread thread) {
 		return null;
 	}
 }
