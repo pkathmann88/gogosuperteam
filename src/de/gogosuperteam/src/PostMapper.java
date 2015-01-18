@@ -16,5 +16,9 @@ public class PostMapper {
 		
 		return post;
 	}
+	
+	public static PostDAO convert(Post p) {
+		return null; 
+	}
 
 }
