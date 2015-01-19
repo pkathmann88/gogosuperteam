@@ -4,16 +4,11 @@ import java.util.HashMap;
 
 public class ForumMapper {
 
-	public static Forum mapToForum(ForumDAO f, HashMap<Integer, Thread> tl) {
-
-		int idDAO = f.getId();
-		String nameDAO = f.getName();
-
-		Forum forum = new Forum(nameDAO, tl);
-		forum.setId(idDAO);
-
-		return forum;
-
+	public static Forum convert(ForumDAO forum, HashMap<Integer, Thread> threads) {
+		return new Forum(forum.getId(), forum.getName(), threads);
 	}
-
+	
+	public static ForumDAO convert(Forum forum) {
+		return new ForumDAO(forum.getName());
+	}
 }

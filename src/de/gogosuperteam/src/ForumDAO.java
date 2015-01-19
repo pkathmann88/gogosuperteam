@@ -6,7 +6,12 @@ public class ForumDAO {
 	private String name;
 	
 	public ForumDAO(String name) {
+		this.name = name;
+	}
+	
+	public ForumDAO(String name, int id) {
 		this.name = name;		
+		this.id = id;
 	}
 	
 	public int getId() {

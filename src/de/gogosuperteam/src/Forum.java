@@ -8,9 +8,14 @@ public class Forum {
 	private String name;
 	private HashMap<Integer, Thread> threadMap;
 
-	public Forum(String name, HashMap<Integer, Thread> tl) {
+	public Forum(String name) {
 		this.name = name;
-		this.threadMap = tl;
+	}
+	
+	public Forum(int id, String name, HashMap<Integer, Thread> threads) {
+		this.id = id;
+		this.name = name;
+		this.threadMap = threads;
 	}
 
 	public void setId(int id) {
@@ -23,7 +28,6 @@ public class Forum {
 
 	public void addThread(Thread t, Integer id) {
 		threadMap.put(id, t);
-
 	}
 
 	public String getName() {

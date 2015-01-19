@@ -19,31 +19,31 @@ public class DBCommander {
 		}
 	}
 
-	public void addPost(PostDAO dao, int threadId) throws SQLException {
-		PreparedStatement prep = connect
-				.prepareStatement("insert into post (thema, creator, content) values (?,?,?)");
+	public PostDAO addPost(PostDAO dao, int threadId) throws SQLException {
+		PreparedStatement prep = connect.prepareStatement(
+				"insert into post (thema, creator, content) values (?,?,?)",
+				Statement.RETURN_GENERATED_KEYS);
 		prep.setString(1, dao.getThema());
 		prep.setInt(2, dao.getErstellerId());
 		prep.setString(3, dao.getText());
-		prep.execute();
+		prep.executeUpdate();
+		ResultSet set = prep.getGeneratedKeys();
+		return new PostDAO(set.getInt("id"), set.getString("thema"),
+				set.getInt("creator"), set.getDate("creation_date"),
+				set.getString("content"));
 	}
 
 	public PostDAO getPost(int id) throws SQLException {
 		Statement statement = connect.createStatement();
-		PostDAO dao = new PostDAO();
-
 		ResultSet resultSet = statement
 				.executeQuery("select * from post where id=" + id);
 
 		if (resultSet.next()) {
-			dao.setId(resultSet.getInt("id"));
-			dao.setErstellerId(resultSet.getInt("creator"));
-			dao.setThema(resultSet.getString("thema"));
-			dao.setText(resultSet.getString("content"));
-			dao.setErstelldatum(resultSet.getDate("creation_date"));
-			return dao;
+			return new PostDAO(resultSet.getInt("id"),
+					resultSet.getString("thema"), resultSet.getInt("creator"),
+					resultSet.getDate("creation_date"),
+					resultSet.getString("content"));
 		}
-
 		return null;
 	}
 
@@ -72,11 +72,15 @@ public class DBCommander {
 		prep.execute();
 	}
 
-	public void addThread(ThreadDAO dao) throws SQLException {
-		PreparedStatement prep = connect
-				.prepareStatement("insert into thread (titel) values (?)");
+	public ThreadDAO addThread(ThreadDAO dao) throws SQLException {
+		PreparedStatement prep = connect.prepareStatement(
+				"insert into thread (titel) values (?)",
+				Statement.RETURN_GENERATED_KEYS);
 		prep.setString(1, dao.getTitel());
-		prep.execute();
+		prep.executeUpdate();
+		ResultSet set = prep.getGeneratedKeys();
+		return new ThreadDAO(set.getString("titel"), set.getInt("id"),
+				set.getDate("date"));
 	}
 
 	public ThreadDAO getThread(int id) throws SQLException {
@@ -103,18 +107,19 @@ public class DBCommander {
 
 	public ResultSet getThreadMap(int ForumId) throws SQLException {
 		Statement statement = connect.createStatement();
-		ResultSet resultSet = statement
+		return statement
 				.executeQuery("select thread_id from forum_to_thread where forum_id="
 						+ ForumId);
-
-		return resultSet;
 	}
 
-	public void addForum(ForumDAO forum) throws SQLException {
-		PreparedStatement prep = connect
-				.prepareStatement("insert into forum (name) values (?)");
+	public ForumDAO addForum(ForumDAO forum) throws SQLException {
+		PreparedStatement prep = connect.prepareStatement(
+				"insert into forum (name) values (?)",
+				Statement.RETURN_GENERATED_KEYS);
 		prep.setString(1, forum.getName());
-		prep.execute();
+		prep.executeUpdate();
+		ResultSet set = prep.getGeneratedKeys();
+		return new ForumDAO(set.getString("name"), set.getInt("id"));
 	}
 
 	public ForumDAO getForum(int id) throws SQLException {
@@ -122,11 +127,9 @@ public class DBCommander {
 		ResultSet resultSet = statement
 				.executeQuery("select * from forum where id=" + id);
 
-		ForumDAO dao;
 		if (resultSet.next()) {
-			dao = new ForumDAO(resultSet.getString("name"));
-			dao.setId(resultSet.getInt("id"));
-			return dao;
+			return new ForumDAO(resultSet.getString("name"),
+					resultSet.getInt("id"));
 		}
 		return null;
 	}
@@ -138,18 +141,26 @@ public class DBCommander {
 		return resultSet;
 	}
 
-	public void addUser(UserDAO dao) {
-		// pretty importantos
+	public UserDAO addUser(UserDAO dao) throws SQLException {
+		PreparedStatement prep = connect.prepareStatement(
+				"insert into user (name, password) values (?,?)",
+				Statement.RETURN_GENERATED_KEYS);
+		prep.setString(1, dao.getName());
+		prep.setString(2, dao.getPassword());
+		prep.executeUpdate();
+		ResultSet set = prep.getGeneratedKeys();
+		return new UserDAO(set.getString("name"), set.getString("password"));
 	}
 
 	public UserDAO getUser(String name) throws SQLException {
-		UserDAO dao = new UserDAO();
-		ResultSet resultSet;
-
-		// if(resultSet.next()) {
-		// return dao;
-		// }
-
+		Statement statement = connect.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select * from user where name=" + name);
+		if (resultSet.next()) {
+			return new UserDAO(resultSet.getString("name"),
+					resultSet.getInt("id"), resultSet.getString("password"),
+					resultSet.getDate("registration_date"));
+		}
 		return null;
 	}
 }

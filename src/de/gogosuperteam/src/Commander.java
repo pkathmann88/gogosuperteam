@@ -3,7 +3,6 @@ package de.gogosuperteam.src;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Commander {
@@ -14,50 +13,59 @@ public class Commander {
 		comm.init();
 	}
 
-	public List<Forum> getForums() throws SQLException {
+	public HashMap<Integer, Forum> getForums() throws SQLException {
 
-		List<Forum> forums = new LinkedList<Forum>();
+		HashMap<Integer, Forum> forumMap = new HashMap<Integer, Forum>();
 		ResultSet set = comm.getAllForums();
 
 		while (set.next()) {
-			// stuff missing till forum & forummapper redo
+			forumMap.put(set.getInt("id"),
+					ForumMapper.convert(comm.getForum(set.getInt("id")), null));
 		}
 
-		return forums;
+		return forumMap;
 	}
 
-	public void addThread(Thread thread, int forumId) throws SQLException {
-		comm.addThread(ThreadMapper.convert(thread));
-		comm.addThreadMap(forumId, thread.getId());
+	public Thread addThread(Thread thread, int forumId) throws SQLException {
+		Thread t = ThreadMapper.convert(
+				comm.addThread(ThreadMapper.convert(thread)), null);
+		comm.addThreadMap(forumId, t.getId());
+		return t;
 	}
 
-	public List<Thread> getThreads(Forum forum) throws SQLException {
-
-		List<Thread> threads = new LinkedList<Thread>();
-		ResultSet map = comm.getThreadMap(forum.getId());
+	public HashMap<Integer, Thread> getThreads(int forumId) throws SQLException {
+		HashMap<Integer, Thread> threadMap = new HashMap<Integer, Thread>();
+		ResultSet map = comm.getThreadMap(forumId);
+		Thread workThread;
 
 		while (map.next()) {
-			threads.add(ThreadMapper.convert(comm.getThread(map
-					.getInt("thread_id"))));
+			workThread = ThreadMapper.convert(
+					comm.getThread(map.getInt("thread_id")),
+					this.getPosts(map.getInt("thread_id")));
+			threadMap.put(workThread.getId(), workThread);
 		}
 
-		return threads;
+		return threadMap;
 	}
 
-	public void addPost(Post post, int threadId) throws SQLException {
-		comm.addPost(PostMapper.convert(post), threadId);
-		comm.addPostMap(threadId, post.getId());
+	public Post addPost(Post post, int threadId) throws SQLException {
+		Post p = PostMapper.convert(comm.addPost(PostMapper.convert(post),
+				threadId));
+		comm.addPostMap(threadId, p.getId());
+		return p;
 	}
 
-	public List<Post> getPosts(Thread thread) throws SQLException {
-		List<Post> posts = new LinkedList<Post>();
-		ResultSet map = comm.getPostMap(thread.getId());
+	public HashMap<Integer, Post> getPosts(int threadId) throws SQLException {
+		HashMap<Integer, Post> postMap = new HashMap<Integer, Post>();
+		ResultSet map = comm.getPostMap(threadId);
+		Post workPost;
 
 		while (map.next()) {
-			posts.add(PostMapper.mapToPost(comm.getPost(map.getInt("post_id"))));
+			workPost = PostMapper.convert(comm.getPost(map.getInt("post_id")));
+			postMap.put(workPost.getId(), workPost);
 		}
 
-		return posts;
+		return postMap;
 	}
 
 	public List<Post> searchForum(String suche) {
@@ -65,38 +73,38 @@ public class Commander {
 		return null;
 	}
 
+	public void addForum(Forum forum) throws SQLException {
+		comm.addForum(ForumMapper.convert(forum));
+	}
+
 	public Forum getForum(int forumId) throws SQLException {
-		ResultSet threadSet = comm.getThreadMap(forumId);
+		ResultSet map = comm.getThreadMap(forumId);
 		HashMap<Integer, Thread> threadMap = new HashMap<Integer, Thread>();
+		Thread workThread;
 
-		while (threadSet.next()) {
-			threadMap.put(threadSet.getInt("thread_id"), ThreadMapper
-					.convert(comm.getThread(threadSet.getInt("thread_id"))));
+		while (map.next()) {
+			workThread = ThreadMapper.convert(
+					comm.getThread(map.getInt("thread_id")),
+					this.getPosts(map.getInt("thread_id")));
+			threadMap.put(workThread.getId(), workThread);
 		}
-
-		Forum ret = ForumMapper.mapToForum(comm.getForum(forumId), threadMap);
-
-		return ret;
+		return ForumMapper.convert(comm.getForum(forumId), threadMap);
 	}
 
-	public Post getPost(int id) throws SQLException {
-		return PostMapper.mapToPost(comm.getPost(id));
+	public Post getPost(int postId) throws SQLException {
+		return PostMapper.convert(comm.getPost(postId));
 	}
 
-	public Thread getThread(int id) throws SQLException {
-		Thread retThread = ThreadMapper.convert(comm.getThread(id));
-		LinkedList<Post> postList = new LinkedList<Post>();
+	public Thread getThread(int threadId) throws SQLException {
+		HashMap<Integer, Post> postMap = new HashMap<Integer, Post>();
+		ResultSet map = comm.getPostMap(threadId);
+		Post workPost;
 
-		ResultSet postMap = comm.getPostMap(id);
-
-		while (postMap.next()) {
-			postList.add(PostMapper.mapToPost(comm.getPost(postMap
-					.getInt("post_id"))));
+		while (map.next()) {
+			workPost = PostMapper.convert(comm.getPost(map.getInt("post_id")));
+			postMap.put(workPost.getId(), workPost);
 		}
-
-		retThread.setPosts(postList);
-		
-		return retThread;
+		return ThreadMapper.convert(comm.getThread(threadId), postMap);
 	}
 
 	public int getPostCount(Thread thread) {
@@ -104,25 +112,26 @@ public class Commander {
 	}
 
 	public int getThreadCount(Forum forum) {
-		// needs forum redo
-		return 0;
+		return forum.getThreadList().size();
 	}
 
-	public boolean login(String name, String pw) {
-		// user schon implementiert?
-		if(name != null && pw != null) {
+	public boolean login(String name, String pw) throws SQLException {
+		if (UserMapper.convert(comm.getUser(name)).compare(name, pw)) {
 			return true;
 		}
 		return false;
 	}
 
-	public User getUser(String name) {
-		// needs user imp.
-		return null;
+	public User addUser(String name, String password) throws SQLException {
+		return UserMapper.convert(comm.addUser(new UserDAO(name, password)));
+	}
+
+	public User getUser(String name) throws SQLException {
+		return UserMapper.convert(comm.getUser(name));
 	}
 
 	public Post lastEntry(Forum forum) {
-		// iwo order by implementieren im DCCommander?
+		// iwo order by implementieren im DBCommander?
 		return null;
 	}
 

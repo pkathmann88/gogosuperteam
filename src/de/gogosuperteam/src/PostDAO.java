@@ -10,13 +10,17 @@ public class PostDAO {
 	private Date erstelldatum;
 	private String text;
 
-	PostDAO() {
-		
-	}
-	
-	PostDAO(String thema, int erstellerId, String text) {
+	public PostDAO(String thema, int erstellerId, String text) {
 		this.thema = thema;
 		this.erstellerId = erstellerId;
+		this.text = text;
+	}
+	
+	public PostDAO(int id, String thema, int erstellerId, Date erstelldatum, String text) {
+		this.id = id;
+		this.thema = thema;
+		this.erstellerId = erstellerId;
+		this.erstelldatum = erstelldatum;
 		this.text = text;
 	}
 

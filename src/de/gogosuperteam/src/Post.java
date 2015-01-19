@@ -9,8 +9,10 @@ public class Post {
 	private String text;
 	private Date erstelldatum;
 	
-	public Post() {
-		
+	public Post(String thema, int erstellerId, String text) {
+		this.thema = thema;
+		this.erstellerId = erstellerId;
+		this.text = text;
 	}
 	
 	public Post(int id, String thema, int erstellerId, String text, Date erstelldatum) {
@@ -41,5 +43,24 @@ public class Post {
 		return thema;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setThema(String thema) {
+		this.thema = thema;
+	}
+
+	public void setErstellerId(int erstellerId) {
+		this.erstellerId = erstellerId;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setErstelldatum(Date erstelldatum) {
+		this.erstelldatum = erstelldatum;
+	}
 
 }
