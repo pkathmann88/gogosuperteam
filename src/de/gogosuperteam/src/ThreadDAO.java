@@ -13,6 +13,7 @@ public class ThreadDAO {
 	}
 	
 	public ThreadDAO(String titel , int id, Date datum) {
+		this.id = id;
 		this.titel = titel;
 		this.datum = datum;
 	}

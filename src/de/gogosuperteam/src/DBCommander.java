@@ -19,7 +19,7 @@ public class DBCommander {
 		}
 	}
 
-	public PostDAO addPost(PostDAO dao, int threadId) throws SQLException {
+	public PostDAO addPost(PostDAO dao) throws SQLException {
 		PreparedStatement prep = connect.prepareStatement(
 				"insert into post (thema, creator, content) values (?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);

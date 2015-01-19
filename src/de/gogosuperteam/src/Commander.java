@@ -49,8 +49,7 @@ public class Commander {
 	}
 
 	public Post addPost(Post post, int threadId) throws SQLException {
-		Post p = PostMapper.convert(comm.addPost(PostMapper.convert(post),
-				threadId));
+		Post p = PostMapper.convert(comm.addPost(PostMapper.convert(post)));
 		comm.addPostMap(threadId, p.getId());
 		return p;
 	}
