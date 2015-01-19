@@ -40,7 +40,7 @@
 		<div id="content">
 
 			<%
-				de.gogosuperteam.src.Thread thread = commander.getThread(request.getParameter("id"));
+				de.gogosuperteam.src.Thread thread = commander.getThread(Integer.decode(request.getParameter("id")));
 				List<Post> posts = new LinkedList<Post>();
 				posts.addAll(thread.getPosts().values());
 				int count = 5;
