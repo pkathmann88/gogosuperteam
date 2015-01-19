@@ -103,7 +103,7 @@ public class DBCommander {
 				.prepareStatement("insert into forum_to_thread (forum_id, thread_id) values (?,?)");
 		prep.setInt(1, forumId);
 		prep.setInt(2, threadId);
-		prep.execute();
+		prep.executeUpdate();
 	}
 
 	public ResultSet getThreadMap(int ForumId) throws SQLException {
