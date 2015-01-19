@@ -130,6 +130,10 @@ public class Commander {
 		return UserMapper.convert(comm.getUser(name));
 	}
 
+	public User getUser(int userId) throws SQLException {
+		return UserMapper.convert(comm.getUser(userId));
+	}
+	
 	public Post lastEntry(Forum forum) {
 		// iwo order by implementieren im DBCommander?
 		return null;

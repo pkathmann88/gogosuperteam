@@ -166,4 +166,16 @@ public class DBCommander {
 		}
 		return null;
 	}
+
+	public UserDAO getUser(int userId) throws SQLException {
+		Statement statement = connect.createStatement();
+		ResultSet resultSet = statement
+				.executeQuery("select * from user where id=" + userId);
+		if (resultSet.next()) {
+			return new UserDAO(resultSet.getString("name"),
+					resultSet.getInt("id"), resultSet.getString("password"),
+					resultSet.getDate("registration_date"));
+		}
+		return null;
+	}
 }
