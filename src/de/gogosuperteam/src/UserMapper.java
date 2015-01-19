@@ -5,10 +5,10 @@ public class UserMapper {
 
 	public static User convert(UserDAO user) {
 		return new User(user.getId(), user.getName(), user.getPassword(),
-				user.getAnmeldeDatum());
+				user.getAnmeldeDatum(), user.isAdmin());
 	}
 
 	public static UserDAO convert(User user) {
-		return new UserDAO(user.getName(), user.getPassword());
+		return new UserDAO(user.getName(), user.getPassword(), user.isAdmin());
 	}
 }

@@ -144,15 +144,16 @@ public class DBCommander {
 
 	public UserDAO addUser(UserDAO dao) throws SQLException {
 		PreparedStatement prep = connect.prepareStatement(
-				"insert into user (name, password) values (?,?)",
+				"insert into user (name, password, admin) values (?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);
 		prep.setString(1, dao.getName());
 		prep.setString(2, dao.getPassword());
+		prep.setBoolean(3, dao.isAdmin());
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
 		set.next();
 		return new UserDAO(dao.getName(), this.getUser(dao.getName())
-				.getPassword());
+				.getPassword(), dao.isAdmin());
 	}
 
 	public UserDAO getUser(String name) throws SQLException {
@@ -162,7 +163,7 @@ public class DBCommander {
 		if (resultSet.next()) {
 			return new UserDAO(resultSet.getString("name"),
 					resultSet.getInt("id"), resultSet.getString("password"),
-					resultSet.getDate("registration_date"));
+					resultSet.getDate("registration_date"), resultSet.getBoolean("admin"));
 		}
 		return null;
 	}
@@ -174,7 +175,7 @@ public class DBCommander {
 		if (resultSet.next()) {
 			return new UserDAO(resultSet.getString("name"),
 					resultSet.getInt("id"), resultSet.getString("password"),
-					resultSet.getDate("registration_date"));
+					resultSet.getDate("registration_date"), resultSet.getBoolean("admin"));
 		}
 		return null;
 	}

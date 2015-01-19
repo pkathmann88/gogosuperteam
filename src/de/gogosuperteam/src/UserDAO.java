@@ -7,17 +7,20 @@ public class UserDAO {
 	private int id;
 	private String password;
 	private Date anmeldeDatum;
+	private boolean admin;
 
-	UserDAO(String name, String password) {
+	UserDAO(String name, String password, boolean admin) {
 		this.name = name;
 		this.password = password;
+		this.admin = admin;
 	}
 
-	UserDAO(String name, int id, String password, Date anmeldeDatum) {
+	UserDAO(String name, int id, String password, Date anmeldeDatum, boolean admin) {
 		this.name = name;
 		this.id = id;
 		this.password = password;
 		this.anmeldeDatum = anmeldeDatum;
+		this.admin = admin;
 	}
 
 	public void SetId(int id) {
@@ -55,5 +58,12 @@ public class UserDAO {
 	public void setAnmeldeDatum(Date anmeldeDatum) {
 		this.anmeldeDatum = anmeldeDatum;
 	}
+	
+	public boolean isAdmin() {
+		return admin;
+	}
 
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 }

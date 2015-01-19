@@ -19,8 +19,9 @@ public class Commander {
 		ResultSet set = comm.getAllForums();
 
 		while (set.next()) {
-			forumMap.put(set.getInt("id"),
-					ForumMapper.convert(comm.getForum(set.getInt("id")), getThreads(set.getInt("id"))));
+			forumMap.put(set.getInt("id"), ForumMapper.convert(
+					comm.getForum(set.getInt("id")),
+					getThreads(set.getInt("id"))));
 		}
 
 		return forumMap;
@@ -73,7 +74,8 @@ public class Commander {
 	}
 
 	public Forum addForum(Forum forum) throws SQLException {
-		return ForumMapper.convert(comm.addForum(ForumMapper.convert(forum)), null);
+		return ForumMapper.convert(comm.addForum(ForumMapper.convert(forum)),
+				null);
 	}
 
 	public Forum getForum(int forumId) throws SQLException {
@@ -121,8 +123,8 @@ public class Commander {
 		return false;
 	}
 
-	public User addUser(String name, String password) throws SQLException {
-		return UserMapper.convert(comm.addUser(new UserDAO(name, password)));
+	public User addUser(String name, String password, boolean admin) throws SQLException {
+		return UserMapper.convert(comm.addUser(new UserDAO(name, password, admin)));
 	}
 
 	public User getUser(String name) throws SQLException {
@@ -132,7 +134,7 @@ public class Commander {
 	public User getUser(int userId) throws SQLException {
 		return UserMapper.convert(comm.getUser(userId));
 	}
-	
+
 	public Post lastEntry(Forum forum) {
 		// iwo order by implementieren im DBCommander?
 		return null;
