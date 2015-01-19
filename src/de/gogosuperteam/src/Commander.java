@@ -20,7 +20,7 @@ public class Commander {
 
 		while (set.next()) {
 			forumMap.put(set.getInt("id"),
-					ForumMapper.convert(comm.getForum(set.getInt("id")), null));
+					ForumMapper.convert(comm.getForum(set.getInt("id")), getThreads(set.getInt("id"))));
 		}
 
 		return forumMap;
