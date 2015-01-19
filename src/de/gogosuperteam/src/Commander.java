@@ -2,6 +2,7 @@ package de.gogosuperteam.src;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,14 +18,14 @@ public class Commander {
 
 		List<Forum> forums = new LinkedList<Forum>();
 		ResultSet set = comm.getAllForums();
-		
-		while(set.next()) {
+
+		while (set.next()) {
 			// stuff missing till forum & forummapper redo
 		}
-		
+
 		return forums;
 	}
-	
+
 	public void addThread(Thread thread, int forumId) throws SQLException {
 		comm.addThread(ThreadMapper.convert(thread));
 		comm.addThreadMap(forumId, thread.getId());
@@ -42,9 +43,10 @@ public class Commander {
 
 		return threads;
 	}
-	
-	public void addPost(Post post, int threadId) {
-		//benötigt post to postDAO convert im Mapper
+
+	public void addPost(Post post, int threadId) throws SQLException {
+		comm.addPost(PostMapper.convert(post), threadId);
+		comm.addPostMap(threadId, post.getId());
 	}
 
 	public List<Post> getPosts(Thread thread) throws SQLException {
@@ -59,13 +61,22 @@ public class Commander {
 	}
 
 	public List<Post> searchForum(String suche) {
-		//optional
+		// optional
 		return null;
 	}
 
-	public Forum getForum(int id) {
-		//needs forum redo
-		return null;
+	public Forum getForum(int forumId) throws SQLException {
+		ResultSet threadSet = comm.getThreadMap(forumId);
+		HashMap<Integer, Thread> threadMap = new HashMap<Integer, Thread>();
+
+		while (threadSet.next()) {
+			threadMap.put(threadSet.getInt("thread_id"), ThreadMapper
+					.convert(comm.getThread(threadSet.getInt("thread_id"))));
+		}
+
+		Forum ret = ForumMapper.mapToForum(comm.getForum(forumId), threadMap);
+
+		return ret;
 	}
 
 	public Post getPost(int id) throws SQLException {
@@ -73,7 +84,19 @@ public class Commander {
 	}
 
 	public Thread getThread(int id) throws SQLException {
-		return ThreadMapper.convert(comm.getThread(id));
+		Thread retThread = ThreadMapper.convert(comm.getThread(id));
+		LinkedList<Post> postList = new LinkedList<Post>();
+
+		ResultSet postMap = comm.getPostMap(id);
+
+		while (postMap.next()) {
+			postList.add(PostMapper.mapToPost(comm.getPost(postMap
+					.getInt("post_id"))));
+		}
+
+		retThread.setPosts(postList);
+		
+		return retThread;
 	}
 
 	public int getPostCount(Thread thread) {
@@ -81,27 +104,30 @@ public class Commander {
 	}
 
 	public int getThreadCount(Forum forum) {
-		//needs forum redo
+		// needs forum redo
 		return 0;
 	}
 
 	public boolean login(String name, String pw) {
-		//user schon implementiert?
+		// user schon implementiert?
+		if(name != null && pw != null) {
+			return true;
+		}
 		return false;
 	}
 
 	public User getUser(String name) {
-		//needs user imp.
+		// needs user imp.
 		return null;
 	}
 
 	public Post lastEntry(Forum forum) {
-		//iwo order by implementieren im DCCommander?
+		// iwo order by implementieren im DCCommander?
 		return null;
 	}
 
 	public Post lastEntry(Thread thread) {
-		//order by?
+		// order by?
 		return null;
 	}
 }
