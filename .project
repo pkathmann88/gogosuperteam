@@ -44,5 +44,10 @@
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Documents/workspce_eclipse/gogosuperteam/WebContent/img/logo.png</locationURI>
 		</link>
+		<link>
+			<name>WebContent/WEB-INF/lib/mysql-connector-java-5.1.34-bin.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Documents/workspce_eclipse/gogosuperteam/WebContent/WEB-INF/lib/mysql-connector-java-5.1.34-bin.jar</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

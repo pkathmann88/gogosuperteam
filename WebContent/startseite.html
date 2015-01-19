@@ -16,61 +16,127 @@
 </head>
 
 <body>
-<div id="background">
+	<div id="background">
 
-<header>
-<a class="home" href="#">&nbsp;</a>
-<div id="headline"> Willkommen im Forum</div>
-        <nav class="vertical">
-        <ul class="topmenu">
-                <li class="first"><a href="startseite.html">&Uuml;bersicht</a></li>
-                <li><a href="startseite.html">Administration</a></li>
-                <li><a href="startseite.html">Mitglieder</a></li>
-                <li><a href="startseite.html">Ausloggen</a></li>
-        </ul></nav>
+		<header>
+			<a class="home" href="#">&nbsp;</a>
+			<div class="login">
+					<form method="post" action="LoginServlet">
+						<label for="un">Username</label>
+						<input type="text" name="username" id="un" /><br>
+						<label for="pe">Password</label>
+						<input type="password" name="password" id ="pw"/><br>
+						<input type="submit" value="Login">
+					</form>
+				</div>
+			<div id="headline">
+			</div>
+			<nav class="vertical">
+				<ul class="topmenu">
+					<li class="first"><a href="startseite.html">&Uuml;bersicht</a></li>
+					<li><a href="startseite.html">Administration</a></li>
+					<li><a href="startseite.html">Mitglieder</a></li>
+					<li><a href="startseite.html">Ausloggen</a></li>
+				</ul>
+			</nav>
 
-</header>
+		</header>
 
-<div id="content">
+		<div id="content">
 
-<table>
-<tr><td class="kat" colspan="3">Allgemeines</td></tr>
-<tr><td class="first"><a href="brett.html">Neues</a><br><span class="beschreibung">Hier werden alle Neuigkeiten beannt gegeben</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 1</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-<tr><td class="first"><a href="brett.html">Allgemeine Fragen zum Wiki</a><br><span class="beschreibung">Hier ist Platz f&uuml;r alle Fragen rund um das Wiki</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 2</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-<tr><td class="first"><a href="brett.html">Allgemeine Fragen zum Forum</a><br><span class="beschreibung">Hier ist Platz f&uuml;r alle Fragen rund um das Forum</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 3</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-</table>
+			<table>
+				<tr>
+					<td class="kat" colspan="3">Allgemeines</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Neues</a><br>
+					<span class="beschreibung">Hier werden alle Neuigkeiten
+							beannt gegeben</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 1</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Allgemeine Fragen
+							zum Wiki</a><br>
+					<span class="beschreibung">Hier ist Platz f&uuml;r alle
+							Fragen rund um das Wiki</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 2</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Allgemeine Fragen
+							zum Forum</a><br>
+					<span class="beschreibung">Hier ist Platz f&uuml;r alle
+							Fragen rund um das Forum</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 3</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+			</table>
 
-<table>
-<tr><td class="kat" colspan="3">Funktionen</td></tr>
-<tr><td class="first"><a href="brett.html">Beitr&auml;ge erstellen</a><br><span class="beschreibung">Hier wird alles rund um die Beitragserstellung im Wiki besprochen</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 1</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-<tr><td class="first"><a href="brett.html">Funktionen des Forums</a><br><span class="beschreibung">Hier ist Platz f&uuml;r Diskussionen rund um das Forum</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 2</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-</table>
+			<table>
+				<tr>
+					<td class="kat" colspan="3">Funktionen</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Beitr&auml;ge
+							erstellen</a><br>
+					<span class="beschreibung">Hier wird alles rund um die
+							Beitragserstellung im Wiki besprochen</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 1</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Funktionen des
+							Forums</a><br>
+					<span class="beschreibung">Hier ist Platz f&uuml;r
+							Diskussionen rund um das Forum</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 2</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+			</table>
 
 
-<table>
-<tr><td class="kat" colspan="3">Inhalte</td></tr>
-<tr><td class="first"><a href="brett.html">Wikibeitr&auml;ge</a><br><span class="beschreibung">Hier ist Platz f&uuml;r Diskussionen rund um alle Wiki-Beitr&auml;ge</span></td>
-<td><span class="info">5 Beitr&auml;ge<br>3 Themen</span></td>
-<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag Nummer 3</a><br>am 30. Oktober 2014, 21:06:27</td></tr>
-</table>
+			<table>
+				<tr>
+					<td class="kat" colspan="3">Inhalte</td>
+				</tr>
+				<tr>
+					<td class="first"><a href="brett.html">Wikibeitr&auml;ge</a><br>
+					<span class="beschreibung">Hier ist Platz f&uuml;r
+							Diskussionen rund um alle Wiki-Beitr&auml;ge</span></td>
+					<td><span class="info">5 Beitr&auml;ge<br>3 Themen
+					</span></td>
+					<td>Letzter Beitrag von User1<br>in <a href="thema.html">Beitrag
+							Nummer 3</a><br>am 30. Oktober 2014, 21:06:27
+					</td>
+				</tr>
+			</table>
 
-</div>
-<footer><nav class="footer"><ul class="topmenu">
-                <li class="first"><a href="#">Kontakt</a></li>
-                <li><a href="#">Impressum</a></li>
+		</div>
+		<footer>
+			<nav class="footer">
+				<ul class="topmenu">
+					<li class="first"><a href="#">Kontakt</a></li>
+					<li><a href="#">Impressum</a></li>
 
-        </ul></nav>
-</footer>
-</div>
+				</ul>
+			</nav>
+		</footer>
+	</div>
 </body>
 </html>

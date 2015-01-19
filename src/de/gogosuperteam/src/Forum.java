@@ -1,6 +1,8 @@
 package de.gogosuperteam.src;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class Forum {
 
@@ -34,8 +36,14 @@ public class Forum {
 		return name;
 	}
 
-	public HashMap<Integer, Thread> getThreadList() {
+	public HashMap<Integer, Thread> getThreadMap() {
 		return threadMap;
+	}
+	
+	public Collection<Thread> getThreadList() {
+		Collection<Thread> threadList = threadMap.values();
+		
+		return threadList;
 	}
 
 }
