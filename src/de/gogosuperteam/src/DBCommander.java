@@ -152,8 +152,8 @@ public class DBCommander {
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
 		set.next();
-		return new UserDAO(dao.getName(), this.getUser(dao.getName())
-				.getPassword(), dao.isAdmin());
+		return new UserDAO(dao.getName(), set.getInt(1), dao.getPassword(),
+				this.getUser(set.getInt(1)).getAnmeldeDatum(), dao.isAdmin());
 	}
 
 	public UserDAO getUser(String name) throws SQLException {
@@ -163,7 +163,8 @@ public class DBCommander {
 		if (resultSet.next()) {
 			return new UserDAO(resultSet.getString("name"),
 					resultSet.getInt("id"), resultSet.getString("password"),
-					resultSet.getDate("registration_date"), resultSet.getBoolean("admin"));
+					resultSet.getDate("registration_date"),
+					resultSet.getBoolean("admin"));
 		}
 		return null;
 	}
@@ -175,7 +176,8 @@ public class DBCommander {
 		if (resultSet.next()) {
 			return new UserDAO(resultSet.getString("name"),
 					resultSet.getInt("id"), resultSet.getString("password"),
-					resultSet.getDate("registration_date"), resultSet.getBoolean("admin"));
+					resultSet.getDate("registration_date"),
+					resultSet.getBoolean("admin"));
 		}
 		return null;
 	}
