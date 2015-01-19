@@ -9,7 +9,6 @@ public class UserMapper {
 	}
 
 	public static UserDAO convert(User user) {
-		return new UserDAO(user.getName(), user.getId(), user.getPassword(),
-				user.getAnmeldeDatum());
+		return new UserDAO(user.getName(), user.getPassword());
 	}
 }

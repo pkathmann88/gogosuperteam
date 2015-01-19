@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class ThreadMapper {
 
 	public static ThreadDAO convert(Thread thread) {
-		return new ThreadDAO(thread.getTitel(), thread.getId(), thread.getDatum());
+		return new ThreadDAO(thread.getTitel());
 	}
 	
 	public static Thread convert(ThreadDAO dao, HashMap<Integer, Post> posts) {
