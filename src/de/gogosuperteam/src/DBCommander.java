@@ -28,9 +28,9 @@ public class DBCommander {
 		prep.setString(3, dao.getText());
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
-		return new PostDAO(set.getInt("id"), set.getString("thema"),
-				set.getInt("creator"), set.getDate("creation_date"),
-				set.getString("content"));
+		set.next();
+		return new PostDAO(set.getInt(1), dao.getThema(), dao.getErstellerId(),
+				dao.getErstelldatum(), dao.getText());
 	}
 
 	public PostDAO getPost(int id) throws SQLException {
@@ -69,7 +69,7 @@ public class DBCommander {
 				.prepareStatement("insert into thread_to_post (thread_id, post_id) values (?,?)");
 		prep.setInt(1, threadId);
 		prep.setInt(2, postId);
-		prep.execute();
+		prep.executeUpdate();
 	}
 
 	public ThreadDAO addThread(ThreadDAO dao) throws SQLException {
@@ -79,8 +79,9 @@ public class DBCommander {
 		prep.setString(1, dao.getTitel());
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
-		return new ThreadDAO(set.getString("titel"), set.getInt("id"),
-				set.getDate("date"));
+		set.next();
+		return new ThreadDAO(dao.getTitel(), set.getInt(1), this.getThread(
+				set.getInt(1)).getDatum());
 	}
 
 	public ThreadDAO getThread(int id) throws SQLException {
@@ -119,14 +120,14 @@ public class DBCommander {
 		prep.setString(1, forum.getName());
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
-		return new ForumDAO(set.getString("name"), set.getInt("id"));
+		set.next();
+		return new ForumDAO(forum.getName(), set.getInt(1));
 	}
 
 	public ForumDAO getForum(int id) throws SQLException {
 		Statement statement = connect.createStatement();
 		ResultSet resultSet = statement
 				.executeQuery("select * from forum where id=" + id);
-
 		if (resultSet.next()) {
 			return new ForumDAO(resultSet.getString("name"),
 					resultSet.getInt("id"));
@@ -149,7 +150,9 @@ public class DBCommander {
 		prep.setString(2, dao.getPassword());
 		prep.executeUpdate();
 		ResultSet set = prep.getGeneratedKeys();
-		return new UserDAO(set.getString("name"), set.getString("password"));
+		set.next();
+		return new UserDAO(dao.getName(), this.getUser(dao.getName())
+				.getPassword());
 	}
 
 	public UserDAO getUser(String name) throws SQLException {

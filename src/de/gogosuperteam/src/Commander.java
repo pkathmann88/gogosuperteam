@@ -73,8 +73,8 @@ public class Commander {
 		return null;
 	}
 
-	public void addForum(Forum forum) throws SQLException {
-		comm.addForum(ForumMapper.convert(forum));
+	public Forum addForum(Forum forum) throws SQLException {
+		return ForumMapper.convert(comm.addForum(ForumMapper.convert(forum)), null);
 	}
 
 	public Forum getForum(int forumId) throws SQLException {
